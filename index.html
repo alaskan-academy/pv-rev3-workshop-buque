@@ -83,6 +83,13 @@
   .center { text-align: center; }
   .section-head { max-width: 680px; margin: 0 auto 40px; text-align: center; }
 
+  /* Brand stripe */
+  .brand-stripe { display: flex; height: 5px; width: 100%; }
+  .brand-stripe span { flex: 1; }
+  .brand-stripe span:nth-child(1) { background: var(--handify-blue); }
+  .brand-stripe span:nth-child(2) { background: var(--handify-green); }
+  .brand-stripe span:nth-child(3) { background: var(--handify-yellow); }
+
   /* Buttons */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -159,6 +166,14 @@
     display: inline-flex; align-items: center; gap: 7px;
     background: rgba(102,153,243,0.1); border: 1px solid rgba(102,153,243,0.3);
     border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 700; color: #0C447C;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 0 0 40px; }
+    .hero__grid { gap: 24px; }
+    .hero h1, .hero .lead { text-align: center; }
+    .hero .lead { max-width: 460px; margin-left: auto; margin-right: auto; }
+    .video-frame { aspect-ratio: 3/4; max-height: 380px; }
   }
 
 
@@ -347,6 +362,8 @@
 </style>
 </head>
 <body>
+
+<div class="brand-stripe"><span></span><span></span><span></span></div>
 
 <!-- 1ª Dobra — Gancho -->
 <section class="hero">
