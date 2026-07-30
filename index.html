@@ -109,6 +109,12 @@
   .btn-block { display: flex; width: 100%; }
   .btn-lg { padding: 20px 36px; font-size: 18px; }
   .btn-sub { font-size: 12px; font-weight: 500; opacity: 0.85; margin-top: 10px; }
+  .secure-note {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--handify-gray-dark); margin-top: 12px;
+  }
+  .bg-dark .secure-note, .bg-blue .secure-note { color: rgba(255,255,255,0.75); }
+  .secure-note--compact { font-size: 10px; margin-top: 4px; }
 
   /* Checklists */
   .checklist { list-style: none; display: grid; gap: 14px; margin: 24px 0; }
@@ -658,6 +664,7 @@
       <div class="installment">12x de <span class="accent">R$4,87</span></div>
       <div class="cash-price">ou R$47 à vista</div>
       <a href="#oferta" class="btn btn-primary btn-lg btn-block js-buy-cta">Quero Criar Meu Primeiro Buquê de Velas</a>
+      <p class="secure-note">🔒 Pagamento Seguro e Acesso Imediato via WhatsApp e E-mail.</p>
     </div>
   </div>
 </section>
@@ -746,6 +753,7 @@
     </ul>
     <p style="font-weight:700;margin-bottom:22px;">Tudo isso por apenas 12x de R$4,87 ou R$47 à vista.</p>
     <a href="#oferta" class="btn btn-lg js-buy-cta" style="background:#fff;color:var(--handify-blue);">QUERO COMEÇAR HOJE</a>
+    <p class="secure-note">🔒 Pagamento Seguro e Acesso Imediato via WhatsApp e E-mail.</p>
   </div>
 </section>
 
@@ -836,6 +844,7 @@
     <p class="center" style="margin-top:8px;color:rgba(255,255,255,0.85);">Se esse sempre foi um sonho seu, talvez este seja o melhor momento para começar.</p>
     <div class="center" style="margin-top:28px;">
       <a href="#oferta" class="btn btn-primary btn-lg js-buy-cta">QUERO CRIAR MEU PRIMEIRO BUQUÊ DE VELAS</a>
+      <p class="secure-note">🔒 Pagamento Seguro e Acesso Imediato via WhatsApp e E-mail.</p>
     </div>
   </div>
 </section>
@@ -862,6 +871,7 @@
     <div class="sticky-cta__price">12x R$4,87<b>ou R$47 à vista</b></div>
     <a href="#oferta" class="btn btn-primary js-buy-cta">Quero Criar Meu Buquê</a>
   </div>
+  <p class="secure-note secure-note--compact">🔒 Pagamento Seguro e Acesso Imediato via WhatsApp e E-mail.</p>
 </div>
 
 <!-- Exit-intent modal -->
@@ -878,6 +888,7 @@
     </ul>
     <p style="font-weight:700;">12x de R$4,87 ou R$47 à vista.</p>
     <a href="#oferta" class="btn btn-primary js-buy-cta" id="exit-cta">Quero Criar Meu Primeiro Buquê de Velas</a>
+    <p class="secure-note" style="color:rgba(255,255,255,0.7);">🔒 Pagamento Seguro e Acesso Imediato via WhatsApp e E-mail.</p>
   </div>
 </div>
 
