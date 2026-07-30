@@ -336,13 +336,15 @@
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     background: #fff; border-top: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 -8px 24px rgba(0,0,0,0.08);
-    padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 16px;
+    padding: 10px 16px; display: flex; flex-direction: column; align-items: center; gap: 6px;
     transform: translateY(120%); transition: transform 260ms ease-out;
   }
   .sticky-cta.is-visible { transform: translateY(0); }
+  .sticky-cta__urgency { font-size: 12px; font-weight: 700; color: var(--handify-black); }
+  .sticky-cta__row { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; }
   .sticky-cta__price { font-size: 13px; line-height: 1.2; display: none; }
   .sticky-cta__price b { display: block; font-size: 16px; color: var(--handify-black); }
-  @media (min-width: 480px) { .sticky-cta__price { display: block; } }
+  @media (min-width: 480px) { .sticky-cta__urgency { display: none; } .sticky-cta__price { display: block; } }
   .sticky-cta .btn { padding: 13px 22px; font-size: 14px; flex: 1; max-width: 320px; }
 
   /* Exit modal */
@@ -848,8 +850,11 @@
 
 <!-- Sticky bottom CTA -->
 <div class="sticky-cta" id="sticky-cta">
-  <div class="sticky-cta__price">12x R$4,87<b>ou R$47 à vista</b></div>
-  <a href="#oferta" class="btn btn-primary js-buy-cta">Quero Criar Meu Buquê</a>
+  <span class="sticky-cta__urgency">⏳ Última chance! Tenha acesso agora ao curso!</span>
+  <div class="sticky-cta__row">
+    <div class="sticky-cta__price">12x R$4,87<b>ou R$47 à vista</b></div>
+    <a href="#oferta" class="btn btn-primary js-buy-cta">Quero Criar Meu Buquê</a>
+  </div>
 </div>
 
 <!-- Exit-intent modal -->
