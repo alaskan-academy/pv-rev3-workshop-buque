@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buquê de Velas do Zero — Handify™</title>
+<meta name="description" content="Aprenda a criar um buquê de velas do zero reconhecendo os Sinais da Cera, mesmo que você nunca tenha feito artesanato antes.">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --handify-blue: #6699F3;
+    --handify-green: #72CF92;
+    --handify-yellow: #FEC649;
+    --handify-black: #0F0F0F;
+    --handify-gray-dark: #2D2D2D;
+    --handify-off-white: #F5F5F0;
+    --blue-shadow: rgba(102, 153, 243, 0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: var(--handify-gray-dark);
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .container--wide { max-width: 1080px; }
+
+  section { padding: 72px 0; }
+  @media (max-width: 640px) { section { padding: 52px 0; } }
+
+  .bg-off  { background: var(--handify-off-white); }
+  .bg-dark { background: var(--handify-black); color: #fff; }
+  .bg-dark h2, .bg-dark h3 { color: #fff; }
+  .bg-blue { background: var(--handify-blue); color: #fff; }
+  .bg-blue h2, .bg-blue h3 { color: #fff; }
+
+  .accent { color: var(--handify-blue); }
+  .bg-dark .accent, .bg-blue .accent { color: var(--handify-yellow); }
+  .accent-alt { color: #4FAF6F; }
+
+  h1, h2, h3 { font-weight: 900; letter-spacing: -0.02em; color: var(--handify-black); }
+  h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.12; }
+  h2 { font-size: clamp(24px, 4vw, 34px); line-height: 1.2; }
+  h3 { font-size: clamp(19px, 2.6vw, 22px); font-weight: 700; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--handify-blue);
+    background: rgba(102,153,243,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .bg-dark .eyebrow, .bg-blue .eyebrow { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .highlight-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(114,207,146,0.14);
+    border: 1px solid rgba(114,207,146,0.4);
+    color: var(--handify-black);
+    font-weight: 700; font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 999px;
+  }
+  .highlight-badge .icon { font-size: 17px; }
+
+  .lead { font-size: 18px; color: var(--handify-gray-dark); }
+  .center { text-align: center; }
+  .section-head { max-width: 680px; margin: 0 auto 40px; text-align: center; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 17px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+    line-height: 1.2;
+  }
+  .btn-primary { background: var(--handify-blue); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px var(--blue-shadow); }
+  .btn-block { display: flex; width: 100%; }
+  .btn-lg { padding: 20px 36px; font-size: 18px; }
+  .btn-sub { font-size: 12px; font-weight: 500; opacity: 0.85; margin-top: 10px; }
+
+  /* Checklists */
+  .checklist { list-style: none; display: grid; gap: 14px; margin: 24px 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; }
+  .checklist .mark {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--handify-green); color: var(--handify-black);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; margin-top: 1px;
+  }
+  .bg-dark .checklist .mark, .bg-blue .checklist .mark { background: var(--handify-yellow); }
+
+  /* Stepper */
+  .stepper { position: relative; display: flex; flex-direction: column; gap: 24px; margin: 40px auto 0; max-width: 460px; }
+  @media (min-width: 700px) { .stepper { flex-direction: row; max-width: none; gap: 0; align-items: flex-start; } }
+  .stepper::before {
+    content: ''; position: absolute; background: rgba(102,153,243,0.25); z-index: 0;
+    left: 21px; top: 22px; bottom: 22px; width: 2px;
+  }
+  @media (min-width: 700px) { .stepper::before { left: 12.5%; right: 12.5%; top: 22px; bottom: auto; width: auto; height: 2px; } }
+  .stepper__item { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; }
+  @media (min-width: 700px) { .stepper__item { flex: 1; flex-direction: column; text-align: center; gap: 14px; padding: 0 8px; } }
+  .stepper__circle {
+    flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--handify-blue); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 17px;
+  }
+  .stepper__label { font-weight: 700; font-size: 15px; color: var(--handify-black); }
+  @media (min-width: 700px) { .stepper__label { max-width: 150px; } }
+
+  /* Hero */
+  .hero { padding: 56px 0 48px; background: linear-gradient(180deg, #fff 0%, var(--handify-off-white) 100%); }
+  .hero__grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 860px) { .hero__grid { grid-template-columns: 1.1fr 1fr; } }
+  .hero h1 { margin-bottom: 18px; }
+  .hero .lead { margin-bottom: 26px; max-width: 520px; }
+  .video-frame {
+    position: relative; aspect-ratio: 9/16; max-height: 560px; margin: 0 auto;
+    background: linear-gradient(160deg, var(--handify-black) 0%, #1c1c1c 100%);
+    border-radius: 20px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  }
+  .video-frame--wide { aspect-ratio: 16/9; max-height: 420px; }
+  .video-frame .play {
+    width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center; color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .video-frame .ph-label { position: absolute; bottom: 18px; left: 18px; right: 18px; color: rgba(255,255,255,0.55); font-size: 12px; text-align: center; }
+
+
+  /* Mechanism callout */
+  .callout {
+    border-left: 4px solid var(--handify-blue);
+    background: var(--handify-off-white);
+    padding: 22px 26px;
+    border-radius: 0 12px 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 26px 0;
+  }
+
+  /* Modules accordion */
+  .accordion { display: grid; gap: 14px; margin-top: 32px; }
+  .acc-item {
+    background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden;
+  }
+  .acc-trigger {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: none; border: none; padding: 20px 22px; text-align: left; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--handify-black);
+  }
+  .acc-trigger .emoji { font-size: 22px; margin-right: 10px; }
+  .acc-trigger .plus { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--handify-off-white); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--handify-blue); transition: transform 200ms ease-out; }
+  .acc-item.is-open .acc-trigger .plus { transform: rotate(45deg); }
+  .acc-panel { max-height: 0; overflow: hidden; transition: max-height 320ms ease; }
+  .acc-panel__inner { padding: 0 22px 24px; }
+  .acc-panel__inner p { margin-bottom: 12px; color: var(--handify-gray-dark); }
+  .acc-panel__inner .checklist { margin: 12px 0; }
+  .acc-panel__inner .closing { font-weight: 600; font-size: 15px; color: var(--handify-black); }
+
+  /* Bonuses */
+  .bonus-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 32px; }
+  .bonus-card {
+    background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.05);
+  }
+  .bonus-card .emoji { font-size: 28px; margin-bottom: 12px; display: block; }
+  .bonus-card h3 { margin-bottom: 8px; font-size: 16px; }
+  .bonus-card p { font-size: 14px; color: var(--handify-gray-dark); }
+
+  /* Testimonials */
+  .proof-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 32px; }
+  .proof-ph {
+    aspect-ratio: 3/4; border-radius: 12px; background: var(--handify-off-white);
+    border: 1px dashed rgba(0,0,0,0.18);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: rgba(45,45,45,0.5); font-size: 12px; text-align: center; padding: 8px;
+  }
+  .proof-ph .emoji { font-size: 24px; }
+
+  /* Countdown */
+  .countdown { display: flex; gap: 10px; justify-content: center; margin: 28px 0 8px; }
+  .countdown .box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; min-width: 68px; text-align: center; }
+  .countdown .num { font-size: 26px; font-weight: 900; color: var(--handify-yellow); }
+  .countdown .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.6); }
+
+  /* Quote section */
+  .quote-box { text-align: center; max-width: 720px; margin: 0 auto; }
+
+  /* Pricing / offer */
+  .price-card {
+    background: #fff; border: 2px solid var(--handify-blue); border-radius: 22px;
+    padding: 40px 32px; max-width: 520px; margin: 40px auto 0;
+    box-shadow: 0 20px 50px var(--blue-shadow);
+    text-align: center;
+  }
+  .price-card .old-price { font-size: 16px; color: #9a9a9a; text-decoration: line-through; margin-bottom: 4px; }
+  .price-card .installment { font-size: clamp(34px, 6vw, 48px); font-weight: 900; color: var(--handify-black); line-height: 1; }
+  .price-card .installment .accent { color: var(--handify-blue); }
+  .price-card .cash-price { font-size: 15px; color: var(--handify-gray-dark); margin: 8px 0 24px; }
+  .price-card .checklist { text-align: left; margin-bottom: 8px; }
+  .price-card .checklist li { font-size: 15px; }
+
+  /* Guarantee */
+  .guarantee-wrap { display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
+  @media (min-width: 720px) { .guarantee-wrap { flex-direction: row; text-align: left; } }
+  .guarantee-seal {
+    flex-shrink: 0; width: 140px; height: 140px; border-radius: 50%;
+    background: var(--handify-green); color: var(--handify-black);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-weight: 900; text-align: center; line-height: 1.1; padding: 10px;
+    border: 4px dashed rgba(15,15,15,0.15);
+  }
+  .guarantee-seal .num { font-size: 34px; }
+  .guarantee-seal .txt { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .risk-lines { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 16px; font-weight: 700; }
+  .risk-lines span { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+
+  /* About Laura */
+  .laura-wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 760px) { .laura-wrap { grid-template-columns: 260px 1fr; } }
+  .laura-avatar {
+    width: 220px; height: 220px; border-radius: 50%; margin: 0 auto;
+    background: linear-gradient(160deg, var(--handify-blue), var(--handify-green));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 56px; font-weight: 900;
+  }
+  .stat-badge { display: inline-flex; align-items: baseline; gap: 8px; background: var(--handify-off-white); border-radius: 12px; padding: 10px 18px; margin: 18px 0; }
+  .stat-badge .n { font-size: 26px; font-weight: 900; color: var(--handify-blue); }
+  .stat-badge .l { font-size: 13px; color: var(--handify-gray-dark); }
+
+  /* Who is it for - accordion variant */
+  .who-item { background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 14px; overflow: hidden; }
+  .who-trigger {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start;
+    font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--handify-black);
+  }
+  .who-trigger .q-mark { flex-shrink: 0; color: var(--handify-blue); font-size: 20px; }
+  .who-panel { max-height: 0; overflow: hidden; transition: max-height 320ms ease; }
+  .who-panel__inner { padding: 0 22px 22px 56px; color: var(--handify-gray-dark); font-size: 15px; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .faq-trigger {
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    background: none; border: none; padding: 20px 4px; cursor: pointer; text-align: left;
+    font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--handify-black);
+  }
+  .faq-trigger .plus { flex-shrink: 0; color: var(--handify-blue); font-size: 20px; transition: transform 200ms ease-out; }
+  .faq-item.is-open .faq-trigger .plus { transform: rotate(45deg); }
+  .faq-panel { max-height: 0; overflow: hidden; transition: max-height 320ms ease; }
+  .faq-panel__inner { padding: 0 4px 20px; color: var(--handify-gray-dark); font-size: 15px; }
+
+  /* Help / contact */
+  .contact-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-top: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .contact-card {
+    display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px; padding: 18px 20px;
+    border: 1px solid rgba(0,0,0,0.08); text-decoration: none; color: var(--handify-black); font-weight: 700;
+    transition: transform 200ms ease-out;
+  }
+  .contact-card:hover { transform: translateY(-2px); }
+  .contact-card .emoji { font-size: 22px; }
+  .schedule-note { text-align: center; font-size: 14px; color: var(--handify-gray-dark); margin-top: 18px; }
+
+  /* Recap / exit section */
+  .recap-grid { display: grid; gap: 28px; margin-top: 8px; }
+  @media (min-width: 760px) { .recap-grid { grid-template-columns: 1fr 1fr; } }
+  .recap-col h3 { color: #fff; margin-bottom: 14px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* Footer */
+  .site-footer { padding: 40px 0; text-align: center; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .site-footer img { height: 22px; margin: 0 auto 14px; }
+  .site-footer .flinks { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .site-footer .flinks a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
+  .site-footer .flinks a:hover { color: #fff; }
+
+  /* Sticky bottom CTA */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: #fff; border-top: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.08);
+    padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 16px;
+    transform: translateY(120%); transition: transform 260ms ease-out;
+  }
+  .sticky-cta.is-visible { transform: translateY(0); }
+  .sticky-cta__price { font-size: 13px; line-height: 1.2; display: none; }
+  .sticky-cta__price b { display: block; font-size: 16px; color: var(--handify-black); }
+  @media (min-width: 480px) { .sticky-cta__price { display: block; } }
+  .sticky-cta .btn { padding: 13px 22px; font-size: 14px; flex: 1; max-width: 320px; }
+
+  /* Exit modal */
+  .exit-overlay {
+    position: fixed; inset: 0; background: rgba(15,15,15,0.72); z-index: 100;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity 220ms ease-out;
+  }
+  .exit-overlay.is-visible { opacity: 1; pointer-events: auto; }
+  .exit-modal {
+    background: var(--handify-black); color: #fff; border-radius: 20px; max-width: 460px; width: 100%;
+    padding: 36px 28px; position: relative; text-align: center;
+    transform: scale(0.94); transition: transform 220ms ease-out;
+  }
+  .exit-overlay.is-visible .exit-modal { transform: scale(1); }
+  .exit-modal__close {
+    position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 16px; cursor: pointer;
+  }
+  .exit-modal h2 { color: #fff; font-size: 22px; margin-bottom: 14px; }
+  .exit-modal .checklist { text-align: left; margin: 18px 0; }
+  .exit-modal .btn { width: 100%; margin-top: 8px; }
+
+  ::selection { background: var(--handify-blue); color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 560ms ease-out, transform 560ms ease-out; }
+  .reveal.is-in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- 1ª Dobra — Gancho -->
+<section class="hero">
+  <div class="container container--wide hero__grid">
+    <div>
+      <h1>Aprenda a criar um <span class="accent">buquê de velas</span> do zero reconhecendo os <span class="accent-alt">Sinais da Cera</span>, mesmo que você nunca tenha feito artesanato antes.</h1>
+      <p class="lead">Laura Martins, professora de mais de 15 mil alunas, mostra o passo a passo completo para modelar, montar e finalizar um buquê de velas bonito sem depender de talento ou experiência.</p>
+    </div>
+    <div>
+      <div class="video-frame">
+        <div class="play">▶</div>
+        <span class="ph-label">[ Espaço para a mini VSL / vídeo hero mostrando o buquê sendo feito ]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2ª Dobra — Continuação do anúncio -->
+<section class="reveal">
+  <div class="container">
+    <h2 class="center">O momento em que você cria seu primeiro buquê é exatamente o que este curso prepara você para viver.</h2>
+    <p class="lead center" style="margin:20px auto 0;max-width:640px;">A Laura ensina cada etapa de forma prática e simples, para que você transforme a cera em flores delicadas, mesmo começando do zero.</p>
+    <div class="stepper">
+      <div class="stepper__item"><span class="stepper__circle">1</span><span class="stepper__label">Preparação da cera</span></div>
+      <div class="stepper__item"><span class="stepper__circle">2</span><span class="stepper__label">Modelagem de cada pétala</span></div>
+      <div class="stepper__item"><span class="stepper__circle">3</span><span class="stepper__label">Montagem das flores</span></div>
+      <div class="stepper__item"><span class="stepper__circle">4</span><span class="stepper__label">Finalização do buquê</span></div>
+    </div>
+    <p class="center" style="font-weight:600;margin-top:36px;">Tudo explicado passo a passo, para que você consiga criar o seu com segurança.</p>
+  </div>
+</section>
+
+<!-- 3ª Dobra — Solução / Oportunidade -->
+<section class="bg-off reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">O método</span>
+      <h2>O que faz uma iniciante conseguir criar um buquê bonito não é talento. É aprender a reconhecer os <span class="accent">Sinais da Cera</span>.</h2>
+    </div>
+    <p style="margin-bottom:16px;">Você provavelmente acredita que quem faz buquês de velas bonitos nasceu com habilidade manual.</p>
+    <p style="margin-bottom:16px;">Mas, na prática, artesãs experientes não trabalham no "achismo". Elas observam pequenos sinais que a própria cera mostra durante a produção e que indicam exatamente quando modelar, montar e finalizar cada etapa.</p>
+    <div class="callout">Foi por isso que a Laura desenvolveu o <span class="accent">Método dos Sinais da Cera™</span>.</div>
+    <p>Em vez de ensinar apenas a copiar um buquê pronto, ela mostra como reconhecer esses sinais durante todo o processo. Assim, você deixa de ficar em dúvida se está fazendo certo e passa a saber exatamente quando seguir para a próxima etapa.</p>
+  </div>
+</section>
+
+<!-- 4ª Dobra — Benefícios -->
+<section class="reveal">
+  <div class="container">
+    <div class="section-head">
+      <h2>Reconheça os <span class="accent">Sinais da Cera</span> e saiba exatamente quando modelar, montar e finalizar cada flor</h2>
+    </div>
+    <p style="margin-bottom:16px;">Quando você aprende a reconhecer os <span class="accent">Sinais da Cera</span>, fazer um buquê deixa de parecer um dom reservado para poucas pessoas.</p>
+    <p style="margin-bottom:16px;">Você passa a entender o momento certo de modelar, montar e finalizar cada flor, ganhando segurança a cada etapa.</p>
+    <p style="margin-bottom:8px;">E, antes mesmo de perceber, aquele buquê bonito que você via apenas em vídeos ou nas redes sociais começa a sair das suas próprias mãos.</p>
+    <h3 style="margin-top:32px;margin-bottom:8px;">O que você conquista ao aprender:</h3>
+    <ul class="checklist">
+      <li><span class="mark">✓</span>Criar um buquê de velas bonito mesmo começando do absoluto zero.</li>
+      <li><span class="mark">✓</span>Saber exatamente quando modelar, montar e desenformar cada flor, sem trabalhar no achismo.</li>
+      <li><span class="mark">✓</span>Ter confiança para mostrar seu primeiro buquê para a família, amigos ou clientes.</li>
+      <li><span class="mark">✓</span>Evitar os erros que normalmente fazem iniciantes desperdiçarem materiais.</li>
+      <li><span class="mark">✓</span>Produzir peças para decorar sua casa, presentear pessoas especiais ou começar a vender.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5ª Dobra — O que você recebe -->
+<section class="bg-off reveal" id="modulos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Conteúdo do curso</span>
+      <h2>Do primeiro pedaço de cera ao seu primeiro buquê pronto: veja exatamente o que você vai aprender em cada etapa.</h2>
+    </div>
+
+    <div class="accordion" id="modules-accordion">
+      <div class="acc-item is-open">
+        <button class="acc-trigger" type="button"><span><span class="emoji">🌼</span>Aula 1 • Começando do Jeito Certo</span><span class="plus">+</span></button>
+        <div class="acc-panel">
+          <div class="acc-panel__inner">
+            <p>Antes de colocar a mão na cera, você vai entender tudo o que precisa para começar com mais segurança.</p>
+            <p><strong>Você vai aprender:</strong></p>
+            <ul class="checklist">
+              <li><span class="mark">✓</span>Quais materiais são realmente necessários para fazer o buquê</li>
+              <li><span class="mark">✓</span>O que vale a pena comprar primeiro e o que pode ficar para depois</li>
+              <li><span class="mark">✓</span>As quantidades indicadas para evitar compras desnecessárias</li>
+              <li><span class="mark">✓</span>Como organizar um espaço simples de produção dentro de casa</li>
+              <li><span class="mark">✓</span>Como preparar a cera, os utensílios e os moldes antes de começar</li>
+              <li><span class="mark">✓</span>Quais cuidados ajudam a evitar desperdício logo nas primeiras tentativas</li>
+            </ul>
+            <p class="closing">Ao final desta aula, você terá clareza sobre o que comprar, como preparar tudo e por onde começar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" type="button"><span><span class="emoji">🌷</span>Aula 2 • Flores de Velas: Margaridas e Tulipas</span><span class="plus">+</span></button>
+        <div class="acc-panel">
+          <div class="acc-panel__inner">
+            <p>Aqui você começa a transformar a cera em flores delicadas, aprendendo cada movimento junto com a Laura.</p>
+            <p><strong>Você vai aprender:</strong></p>
+            <ul class="checklist">
+              <li><span class="mark">✓</span>Como preparar a cera na textura certa para modelar</li>
+              <li><span class="mark">✓</span>Como reconhecer os <span class="accent">Sinais da Cera</span> antes de iniciar cada etapa</li>
+              <li><span class="mark">✓</span>O momento ideal para abrir, cortar e modelar as pétalas</li>
+              <li><span class="mark">✓</span>Como criar pétalas com formato bonito e espessura equilibrada</li>
+              <li><span class="mark">✓</span>Como montar margaridas pétala por pétala</li>
+              <li><span class="mark">✓</span>Como modelar tulipas delicadas e com aparência natural</li>
+              <li><span class="mark">✓</span>Como posicionar o pavio corretamente dentro da flor</li>
+              <li><span class="mark">✓</span>Como corrigir pétalas tortas ou formatos que não ficaram como você queria</li>
+              <li><span class="mark">✓</span>Como deixar as flores mais uniformes e bem acabadas</li>
+            </ul>
+            <p class="closing">Ao final, você terá suas primeiras flores prontas e vai entender como repetir o processo sempre que quiser produzir novamente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" type="button"><span><span class="emoji">💐</span>Aula 3 • Montagem e Acabamento do Buquê</span><span class="plus">+</span></button>
+        <div class="acc-panel">
+          <div class="acc-panel__inner">
+            <p>Depois de criar as flores, você aprende a transformar cada peça individual em um buquê bonito, equilibrado e pronto para encantar.</p>
+            <p><strong>Você vai aprender:</strong></p>
+            <ul class="checklist">
+              <li><span class="mark">✓</span>Como preparar a base que sustenta as flores</li>
+              <li><span class="mark">✓</span>Como posicionar cada flor para criar volume e harmonia</li>
+              <li><span class="mark">✓</span>Como combinar margaridas e tulipas dentro do mesmo buquê</li>
+              <li><span class="mark">✓</span>Como distribuir alturas, cores e espaços sem deixar o arranjo vazio</li>
+              <li><span class="mark">✓</span>Como prender as flores com firmeza e segurança</li>
+              <li><span class="mark">✓</span>Como esconder a estrutura interna do buquê</li>
+              <li><span class="mark">✓</span>Como fazer o acabamento com papel, laços e detalhes decorativos</li>
+              <li><span class="mark">✓</span>Como deixar o buquê bonito de todos os ângulos</li>
+              <li><span class="mark">✓</span>Como finalizar a peça com aparência delicada e profissional</li>
+            </ul>
+            <p class="closing">Ao final desta aula, você terá seu primeiro buquê montado e pronto para presentear, fotografar ou oferecer por encomenda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" type="button"><span><span class="emoji">💰</span>Aula 4 • Quanto Cobrar Pelo Seu Buquê</span><span class="plus">+</span></button>
+        <div class="acc-panel">
+          <div class="acc-panel__inner">
+            <p>Um buquê artesanal pode ter um valor de venda muito maior do que o custo dos materiais, mas é importante saber fazer essa conta corretamente.</p>
+            <p><strong>Você vai aprender:</strong></p>
+            <ul class="checklist">
+              <li><span class="mark">✓</span>Como calcular o custo da cera, essência, pavio e decoração</li>
+              <li><span class="mark">✓</span>Como incluir embalagens e outros pequenos gastos no preço</li>
+              <li><span class="mark">✓</span>Como calcular o valor da sua mão de obra</li>
+              <li><span class="mark">✓</span>Como definir uma margem de lucro para cada buquê</li>
+              <li><span class="mark">✓</span>Como evitar cobrar apenas pelo material utilizado</li>
+              <li><span class="mark">✓</span>Como usar a calculadora automática da Handify</li>
+              <li><span class="mark">✓</span>Como chegar a um preço que seja justo para você e para a cliente</li>
+            </ul>
+            <p class="closing">Assim, quando alguém perguntar "Quanto custa um buquê desses?", você terá segurança para responder sem chutar o preço.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" type="button"><span><span class="emoji">🛠</span>Aula 5 • Correção de Erros e Acabamento Bonito</span><span class="plus">+</span></button>
+        <div class="acc-panel">
+          <div class="acc-panel__inner">
+            <p>Mesmo seguindo o passo a passo, pequenas falhas podem acontecer. Nesta aula, você aprende a identificar o problema e salvar a peça antes de desistir dela.</p>
+            <p><strong>Você vai descobrir como corrigir:</strong></p>
+            <ul class="checklist">
+              <li><span class="mark">✓</span>Cera que endureceu antes da hora</li>
+              <li><span class="mark">✓</span>Cera mole demais para modelar</li>
+              <li><span class="mark">✓</span>Pétalas quebradas, grossas ou deformadas</li>
+              <li><span class="mark">✓</span>Flores que perderam o formato</li>
+              <li><span class="mark">✓</span>Bolhas, manchas e marcas na superfície</li>
+              <li><span class="mark">✓</span>Diferenças de tamanho entre as pétalas</li>
+              <li><span class="mark">✓</span>Flores que ficam soltas durante a montagem</li>
+              <li><span class="mark">✓</span>Buquês com espaços vazios ou aparência desorganizada</li>
+              <li><span class="mark">✓</span>Acabamentos que deixam a peça com aparência amadora</li>
+            </ul>
+            <p class="closing">Você também aprende quais <span class="accent">Sinais da Cera</span> observar para evitar que esses erros se repitam nas próximas produções.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:32px;">
+      <span class="highlight-badge"><span class="icon">♾️</span>Seu acesso é vitalício</span>
+    </div>
+    <p class="center" style="max-width:560px;margin:12px auto 0;">Não importa se você fizer seu primeiro buquê amanhã ou daqui a alguns meses. Depois da compra, o curso continuará disponível para você assistir e revisar sempre que quiser.</p>
+  </div>
+</section>
+
+<!-- 6ª Dobra — Bônus -->
+<section class="reveal">
+  <div class="container container--wide">
+    <div class="section-head">
+      <span class="eyebrow">Bônus inclusos</span>
+      <h2>E além das aulas, você ainda recebe um pacote completo de materiais para facilitar todo o processo.</h2>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card"><span class="emoji">📘</span><h3>Manual Completo do Buquê de Velas</h3><p>Todo o passo a passo organizado em PDF para imprimir ou consultar sempre que estiver produzindo.</p></div>
+      <div class="bonus-card"><span class="emoji">🛒</span><h3>Mapa de Materiais Essenciais</h3><p>A lista completa de tudo o que você precisa, com quantidades exatas para comprar apenas o necessário.</p></div>
+      <div class="bonus-card"><span class="emoji">🌡</span><h3>Guia dos <span class="accent">Sinais da Cera</span></h3><p>As temperaturas e os sinais certos de cada etapa para modelar as flores com muito mais segurança e sem desperdício.</p></div>
+      <div class="bonus-card"><span class="emoji">🛠</span><h3>Guia de Acabamento Profissional</h3><p>As soluções para evitar bolhas, manchas, rachaduras e outros erros que deixam o buquê com aparência amadora.</p></div>
+      <div class="bonus-card"><span class="emoji">💰</span><h3>App de Precificação Handify</h3><p>Informe seus custos e descubra automaticamente quanto cobrar e qual será o seu lucro. Sem planilhas complicadas.</p></div>
+      <div class="bonus-card"><span class="emoji">🧪</span><h3>App de Essências Handify</h3><p>Calcule em segundos a quantidade ideal de essência para cada produção, direto pelo celular.</p></div>
+      <div class="bonus-card"><span class="emoji">🏪</span><h3>Central de Fornecedores Handify</h3><p>Links diretos dos principais fornecedores nacionais de cera, moldes, pavios, corantes e outros materiais.</p></div>
+      <div class="bonus-card"><span class="emoji">💡</span><h3>Biblioteca de Inspirações Handify</h3><p>Um acervo em constante atualização com referências, ideias, combinações e tendências para criar novos buquês.</p></div>
+      <div class="bonus-card"><span class="emoji">👭</span><h3>Comunidade Exclusiva de Alunas</h3><p>Um espaço para tirar dúvidas, compartilhar resultados e aprender com quem está seguindo o mesmo caminho.</p></div>
+      <div class="bonus-card"><span class="emoji">♾️</span><h3>Acesso Vitalício</h3><p>Assista às aulas e utilize todas as ferramentas sempre que quiser, sem prazo para terminar.</p></div>
+    </div>
+    <p class="center" style="max-width:600px;margin:36px auto 0;font-weight:600;">A ideia é simples: você assistir, aplicar e conseguir fazer. Por isso, além das aulas, você recebe ferramentas práticas que deixam o processo mais organizado, mais seguro e muito mais fácil para quem está começando.</p>
+  </div>
+</section>
+
+<!-- 7ª Dobra — Depoimentos -->
+<section class="bg-off reveal">
+  <div class="container container--wide">
+    <div class="section-head">
+      <h2>Esses são alguns dos primeiros buquês criados por alunas que também começaram do zero.</h2>
+      <p class="lead" style="margin-top:12px;">A maioria delas nunca tinha feito artesanato antes. Hoje, conseguem criar buquês delicados, presentear pessoas especiais e até receber as primeiras encomendas aplicando exatamente o que aprenderam nas aulas.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+      <div class="proof-ph"><span class="emoji">📸</span>Print de aluna</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8ª Dobra — Urgência -->
+<section class="bg-dark reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Atenção</span>
+      <h2>O Buquê de Velas do Zero está disponível por um valor especial somente durante esta oferta.</h2>
+    </div>
+    <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);">Ao garantir seu acesso hoje, você recebe o curso completo com todos os materiais de apoio inclusos pelo valor promocional desta página.</p>
+    <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);">Quando esta condição terminar, o curso continuará disponível, mas poderá voltar ao valor normal e os bônus poderão ser disponibilizados separadamente.</p>
+    <div class="countdown" id="countdown">
+      <div class="box"><div class="num" id="cd-min">15</div><div class="lbl">min</div></div>
+      <div class="box"><div class="num" id="cd-sec">00</div><div class="lbl">seg</div></div>
+    </div>
+    <p class="center" style="font-weight:700;font-size:17px;margin-top:8px;">Não deixe para depois aquilo que pode ser o início do seu primeiro buquê.</p>
+  </div>
+</section>
+
+<!-- 9ª Dobra -->
+<section class="reveal">
+  <div class="container quote-box">
+    <h2>Com o Método dos <span class="accent">Sinais da Cera</span>, você aprende uma habilidade que pode se pagar logo nos primeiros buquês vendidos.</h2>
+    <p style="margin-top:20px;">A Laura conduz você em cada etapa da criação, mostrando exatamente o que observar e fazer para criar um buquê bonito com muito mais segurança, mesmo que seja a sua primeira vez trabalhando com cera.</p>
+    <p style="margin-top:16px;">Um buquê artesanal tem um alto valor percebido e costuma ser vendido por muito mais do que custa para produzir.</p>
+    <p style="margin-top:16px;">Por isso, além de aprender uma nova técnica, você desenvolve uma habilidade que pode acompanhar você por muitos anos, seja para presentear ou transformar em uma nova fonte de renda.</p>
+  </div>
+</section>
+
+<!-- 10ª Dobra — Oferta -->
+<section class="bg-off reveal" id="oferta">
+  <div class="container">
+    <div class="section-head">
+      <h2>Hoje você pode começar a criar seu primeiro buquê de velas por menos do que custa um jantar para duas pessoas.</h2>
+    </div>
+    <p class="center" style="max-width:560px;margin:0 auto;">Ao garantir sua vaga hoje, você recebe acesso ao <strong>Buquê de Velas do Zero</strong>, incluindo:</p>
+
+    <div class="price-card">
+      <ul class="checklist">
+        <li><span class="mark">✓</span>Curso completo em vídeo.</li>
+        <li><span class="mark">✓</span>Método dos <span class="accent">Sinais da Cera</span>.</li>
+        <li><span class="mark">✓</span>Apostila digital.</li>
+        <li><span class="mark">✓</span>Lista de materiais.</li>
+        <li><span class="mark">✓</span>Guia de temperaturas.</li>
+        <li><span class="mark">✓</span>Lista de fornecedores.</li>
+        <li><span class="mark">✓</span>Calculadora de precificação.</li>
+        <li><span class="mark">✓</span>Biblioteca de inspirações.</li>
+        <li><span class="mark">✓</span>Comunidade exclusiva.</li>
+        <li><span class="mark">✓</span>Acesso vitalício.</li>
+      </ul>
+      <div class="old-price">De R$197</div>
+      <div class="installment">12x de <span class="accent">R$4,87</span></div>
+      <div class="cash-price">ou R$47 à vista</div>
+      <a href="#oferta" class="btn btn-primary btn-lg btn-block js-buy-cta">Quero Criar Meu Primeiro Buquê de Velas</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11ª Dobra — Garantia -->
+<section class="reveal">
+  <div class="container">
+    <div class="guarantee-wrap">
+      <div class="guarantee-seal"><span class="num">7</span><span class="txt">dias de<br>garantia</span></div>
+      <div>
+        <h2 style="margin-bottom:14px;">Você tem 7 dias para assistir às aulas e decidir com tranquilidade.</h2>
+        <p style="margin-bottom:12px;">Entre no curso, conheça o Método dos <span class="accent">Sinais da Cera</span>, veja como as aulas funcionam e acompanhe as primeiras etapas.</p>
+        <p style="margin-bottom:12px;">Se dentro de 7 dias você concluir que o curso não é para você, basta solicitar o reembolso e devolveremos 100% do valor pago.</p>
+        <div class="risk-lines">
+          <span>✔ Sem burocracia.</span>
+          <span>✔ Sem perguntas.</span>
+          <span>✔ O risco fica com a gente.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12ª Dobra — Quem é a Laura -->
+<section class="bg-off reveal">
+  <div class="container">
+    <div class="laura-wrap">
+      <div class="laura-avatar">LM</div>
+      <div>
+        <span class="eyebrow">Quem ensina</span>
+        <h2 style="margin-bottom:14px;">Conheça a professora que já ajudou milhares de mulheres a descobrirem que talento nunca foi o requisito para criar um buquê bonito.</h2>
+        <p style="margin-bottom:12px;">Laura Martins é artesã e professora de artesanato há anos.</p>
+        <div class="stat-badge"><span class="n">15 mil+</span><span class="l">alunas já ensinadas</span></div>
+        <p style="margin-bottom:12px;">Ao longo desse tempo, já ensinou mais de 15 mil alunas, muitas delas sem qualquer experiência anterior.</p>
+        <p style="margin-bottom:12px;">Foi acompanhando essas iniciantes que ela percebeu algo interessante. As alunas que evoluíam mais rápido não eram as mais habilidosas. Eram aquelas que aprendiam a reconhecer os pequenos sinais que a própria cera mostrava durante a produção.</p>
+        <p style="margin-bottom:12px;">Essa percepção deu origem ao Método dos <span class="accent">Sinais da Cera</span>, que hoje é a base do Buquê de Velas do Zero.</p>
+        <p>Em vez de ensinar apenas a copiar um modelo pronto, Laura ensina você a entender o processo por trás de cada flor, tornando o aprendizado muito mais simples para quem está começando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13ª Dobra — Quem mais aproveita -->
+<section class="reveal">
+  <div class="container">
+    <div class="section-head">
+      <h2>Quem mais aproveita o Buquê de Velas do Zero?</h2>
+      <p class="lead" style="margin-top:12px;">Este curso foi pensado para pessoas que...</p>
+    </div>
+
+    <div id="who-accordion">
+      <div class="who-item is-open">
+        <button class="who-trigger" type="button"><span class="q-mark">?</span><span>...olham um buquê de velas pronto e pensam: "Isso deve ser muito difícil de fazer."</span></button>
+        <div class="who-panel"><div class="who-panel__inner">Na verdade, a maior dificuldade não é modelar as flores. É não saber reconhecer o momento certo de cada etapa. Com o Método dos <span class="accent">Sinais da Cera</span>, você aprende exatamente o que observar para trabalhar com mais segurança, mesmo sem experiência.</div></div>
+      </div>
+      <div class="who-item">
+        <button class="who-trigger" type="button"><span class="q-mark">?</span><span>...têm medo de comprar materiais e acabar desperdiçando tudo.</span></button>
+        <div class="who-panel"><div class="who-panel__inner">Por isso, além das aulas, você recebe uma lista completa de materiais e fornecedores recomendados. Assim, sabe exatamente o que comprar para começar, evitando gastos desnecessários e tentativas no escuro.</div></div>
+      </div>
+      <div class="who-item">
+        <button class="who-trigger" type="button"><span class="q-mark">?</span><span>...gostariam de transformar esse hobby em uma renda extra.</span></button>
+        <div class="who-panel"><div class="who-panel__inner">Além da parte prática, o curso inclui uma aula de precificação para ajudar você a calcular o valor dos seus buquês e começar a vender com muito mais confiança.</div></div>
+      </div>
+      <div class="who-item">
+        <button class="who-trigger" type="button"><span class="q-mark">?</span><span>...já compraram cursos online e ficaram com receio de se decepcionar novamente.</span></button>
+        <div class="who-panel"><div class="who-panel__inner">Você pode conhecer o curso com tranquilidade. São 7 dias de garantia incondicional. Se entender que ele não é para você, basta solicitar o reembolso dentro desse período.</div></div>
+      </div>
+    </div>
+
+    <p class="center" style="max-width:600px;margin:32px auto 0;font-weight:700;">Se você se identificou com pelo menos uma dessas situações, provavelmente este curso foi feito para você.</p>
+    <p class="center" style="max-width:600px;margin:12px auto 0;">Você não precisa ter talento, experiência ou um ateliê montado. Basta aprender a reconhecer os <span class="accent">Sinais da Cera</span> e seguir o passo a passo que a Laura ensina ao longo das aulas.</p>
+  </div>
+</section>
+
+<!-- 13aª Dobra — repetir oferta -->
+<section class="bg-blue reveal">
+  <div class="container center">
+    <h2 style="max-width:640px;margin:0 auto 16px;">Da próxima vez que alguém pegar um buquê nas mãos, pode ser um feito por você.</h2>
+    <p style="max-width:560px;margin:0 auto 24px;color:rgba(255,255,255,0.9);">É isso que você aprende no Buquê de Velas do Zero: transformar um bloco de cera em um buquê que dá orgulho de entregar.</p>
+    <ul class="checklist" style="max-width:320px;margin:0 auto 24px;text-align:left;">
+      <li><span class="mark">✓</span>Curso completo</li>
+      <li><span class="mark">✓</span>Método dos <span class="accent">Sinais da Cera</span></li>
+      <li><span class="mark">✓</span>Materiais de apoio</li>
+      <li><span class="mark">✓</span>Lista de fornecedores</li>
+      <li><span class="mark">✓</span>Acesso vitalício</li>
+    </ul>
+    <p style="font-weight:700;margin-bottom:22px;">Tudo isso por apenas 12x de R$4,87 ou R$47 à vista.</p>
+    <a href="#oferta" class="btn btn-lg js-buy-cta" style="background:#fff;color:var(--handify-blue);">QUERO COMEÇAR HOJE</a>
+  </div>
+</section>
+
+<!-- 14ª Dobra — FAQ -->
+<section class="reveal">
+  <div class="container">
+    <div class="section-head"><h2>Perguntas frequentes</h2></div>
+    <div id="faq-accordion">
+      <div class="faq-item is-open">
+        <button class="faq-trigger" type="button"><span>Quanto preciso investir para começar?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Você não precisa montar um ateliê completo. Dentro do curso, mostramos exatamente quais materiais comprar primeiro para começar sem gastos desnecessários.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>Onde encontro os materiais?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Você recebe uma lista de fornecedores recomendados para facilitar suas compras e saber exatamente onde encontrar cada item.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>O acesso ao curso é vitalício?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Sim. Depois da compra, o acesso é seu para sempre. Você poderá assistir às aulas quantas vezes quiser, no seu ritmo.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>As aulas são para quem nunca fez artesanato?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Sim. Todo o conteúdo foi pensado para iniciantes, explicando cada etapa desde o básico.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>Posso assistir pelo celular?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Sim. Você pode acessar a área de membros pelo celular, tablet ou computador, quando e onde preferir.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>Quando recebo o acesso?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Assim que o pagamento for confirmado, seu acesso é liberado e você já pode começar as aulas.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" type="button"><span>Se eu tiver dúvidas durante o curso, vou ter ajuda?</span><span class="plus">+</span></button>
+        <div class="faq-panel"><div class="faq-panel__inner">Sim. Você terá acesso à comunidade exclusiva da Handify, onde poderá tirar dúvidas, compartilhar seus resultados e interagir com outras alunas.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15ª Dobra — Precisa de ajuda -->
+<section class="bg-off reveal">
+  <div class="container center">
+    <h2 style="margin-bottom:14px;">Ainda ficou com alguma dúvida? Nossa equipe pode ajudar.</h2>
+    <p style="max-width:520px;margin:0 auto;">Se você tiver qualquer dúvida sobre o curso, pagamento ou acesso, nossa equipe de atendimento está pronta para ajudar.</p>
+    <div class="contact-grid">
+      <a href="#" class="contact-card js-whatsapp"><span class="emoji">💬</span>WhatsApp</a>
+      <a href="#" class="contact-card js-email"><span class="emoji">✉️</span>E-mail</a>
+    </div>
+    <p class="schedule-note">Atendemos de segunda a sexta-feira, das 9h às 18h, e aos sábados, das 9h às 12h.</p>
+  </div>
+</section>
+
+<!-- 16ª Dobra — Resumo final -->
+<section class="bg-dark reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">⚠️ Antes de sair desta página</span>
+      <h2>Se você rolou até aqui sem ler tudo, aqui está um resumo em menos de 30 segundos.</h2>
+    </div>
+    <div class="recap-grid">
+      <div class="recap-col">
+        <h3>O Buquê de Velas do Zero foi criado para quem:</h3>
+        <ul class="checklist">
+          <li><span class="mark">✓</span>Nunca fez artesanato.</li>
+          <li><span class="mark">✓</span>Quer aprender sem depender de talento.</li>
+          <li><span class="mark">✓</span>Não sabe quais materiais comprar.</li>
+          <li><span class="mark">✓</span>Quer criar buquês bonitos para presentear ou vender.</li>
+        </ul>
+      </div>
+      <div class="recap-col">
+        <h3>Ao entrar hoje, você recebe:</h3>
+        <ul class="checklist">
+          <li><span class="mark">✓</span>Curso completo em vídeo.</li>
+          <li><span class="mark">✓</span>Método dos <span class="accent">Sinais da Cera</span>.</li>
+          <li><span class="mark">✓</span>Apostila digital.</li>
+          <li><span class="mark">✓</span>Lista de materiais e fornecedores.</li>
+          <li><span class="mark">✓</span>Guia de temperaturas.</li>
+          <li><span class="mark">✓</span>Calculadora de precificação.</li>
+          <li><span class="mark">✓</span>Biblioteca de inspirações.</li>
+          <li><span class="mark">✓</span>Comunidade exclusiva.</li>
+          <li><span class="mark">✓</span>Acesso vitalício.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="center" style="margin-top:28px;color:rgba(255,255,255,0.85);">Além disso, você ainda tem 7 dias de garantia para conhecer o curso sem riscos.</p>
+    <p class="center" style="font-weight:700;font-size:18px;margin-top:12px;">Tudo isso por apenas 12x de R$4,87 ou R$47 à vista.</p>
+    <p class="center" style="margin-top:8px;color:rgba(255,255,255,0.85);">Se esse sempre foi um sonho seu, talvez este seja o melhor momento para começar.</p>
+    <div class="center" style="margin-top:28px;">
+      <a href="#oferta" class="btn btn-primary btn-lg js-buy-cta">QUERO CRIAR MEU PRIMEIRO BUQUÊ DE VELAS</a>
+    </div>
+  </div>
+</section>
+
+<!-- 17ª Dobra — Rodapé -->
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <img src="assets/logo-mono-branco-horizontal.png" alt="Handify™">
+    <div>Buquê de Velas do Zero</div>
+    <div>Curso online com acesso vitalício.</div>
+    <div style="margin-top:10px;">© Handify. Todos os direitos reservados.</div>
+    <div class="flinks">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky bottom CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta__price">12x R$4,87<b>ou R$47 à vista</b></div>
+  <a href="#oferta" class="btn btn-primary js-buy-cta">Quero Criar Meu Buquê</a>
+</div>
+
+<!-- Exit-intent modal -->
+<div class="exit-overlay" id="exit-overlay">
+  <div class="exit-modal">
+    <button class="exit-modal__close" id="exit-close" aria-label="Fechar">✕</button>
+    <span class="eyebrow">⚠️ Espere!</span>
+    <h2>Antes de sair, aqui está um resumo em menos de 30 segundos.</h2>
+    <ul class="checklist">
+      <li><span class="mark">✓</span>Curso completo + Método dos <span class="accent">Sinais da Cera</span>.</li>
+      <li><span class="mark">✓</span>Apostila, lista de materiais e fornecedores.</li>
+      <li><span class="mark">✓</span>Comunidade exclusiva e acesso vitalício.</li>
+      <li><span class="mark">✓</span>7 dias de garantia incondicional.</li>
+    </ul>
+    <p style="font-weight:700;">12x de R$4,87 ou R$47 à vista.</p>
+    <a href="#oferta" class="btn btn-primary js-buy-cta" id="exit-cta">Quero Criar Meu Primeiro Buquê de Velas</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  // TODO: colar aqui o link real de checkout. Enquanto vazio, os botões rolam até a seção de oferta.
+  var CHECKOUT_URL = "";
+  if (CHECKOUT_URL) {
+    document.querySelectorAll('.js-buy-cta').forEach(function (el) { el.href = CHECKOUT_URL; });
+  }
+
+  // TODO: colocar número de WhatsApp e e-mail reais
+  var WHATSAPP_URL = "";
+  var EMAIL_ADDRESS = "";
+  if (WHATSAPP_URL) document.querySelector('.js-whatsapp').href = WHATSAPP_URL;
+  if (EMAIL_ADDRESS) document.querySelector('.js-email').href = "mailto:" + EMAIL_ADDRESS;
+
+  // Generic accordion behavior
+  var openAccordionPanels = [];
+  function setupAccordion(containerSelector, itemSelector, singleOpen) {
+    var container = document.querySelector(containerSelector);
+    if (!container) return;
+    var items = container.querySelectorAll(itemSelector);
+    function closeItem(item) {
+      item.classList.remove('is-open');
+      var panel = item.querySelector('.acc-panel, .who-panel, .faq-panel');
+      panel.style.maxHeight = null;
+      openAccordionPanels = openAccordionPanels.filter(function (p) { return p !== panel; });
+    }
+    function openItem(item) {
+      item.classList.add('is-open');
+      var panel = item.querySelector('.acc-panel, .who-panel, .faq-panel');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      if (openAccordionPanels.indexOf(panel) === -1) openAccordionPanels.push(panel);
+    }
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.acc-trigger, .who-trigger, .faq-trigger');
+      if (item.classList.contains('is-open')) openItem(item);
+      trigger.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+        if (singleOpen) {
+          items.forEach(closeItem);
+        }
+        if (isOpen) { closeItem(item); } else { openItem(item); }
+      });
+    });
+  }
+  setupAccordion('#modules-accordion', '.acc-item', true);
+  setupAccordion('#who-accordion', '.who-item', true);
+  setupAccordion('#faq-accordion', '.faq-item', true);
+
+  // Recompute open panel heights once webfonts finish swapping and on resize,
+  // otherwise text measured with the fallback font gets clipped after Montserrat loads.
+  function refreshOpenAccordionPanels() {
+    openAccordionPanels.forEach(function (panel) { panel.style.maxHeight = panel.scrollHeight + 'px'; });
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(refreshOpenAccordionPanels);
+  }
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(refreshOpenAccordionPanels, 150);
+  });
+
+  // Sticky bottom CTA — only appears once the visitor has scrolled past the offer section
+  var stickyCta = document.getElementById('sticky-cta');
+  var oferta = document.getElementById('oferta');
+  window.addEventListener('scroll', function () {
+    var ofertaBottom = oferta.offsetTop + oferta.offsetHeight;
+    if (window.scrollY > ofertaBottom) {
+      stickyCta.classList.add('is-visible');
+    } else {
+      stickyCta.classList.remove('is-visible');
+    }
+  }, { passive: true });
+
+  // Countdown timer (evergreen, session-based)
+  var cdMin = document.getElementById('cd-min');
+  var cdSec = document.getElementById('cd-sec');
+  var DURATION = 15 * 60;
+  var key = 'bvz_offer_deadline';
+  var deadline = parseInt(sessionStorage.getItem(key), 10);
+  if (!deadline || isNaN(deadline)) {
+    deadline = Date.now() + DURATION * 1000;
+    sessionStorage.setItem(key, deadline);
+  }
+  function tick() {
+    var remaining = Math.round((deadline - Date.now()) / 1000);
+    if (remaining <= 0) {
+      deadline = Date.now() + DURATION * 1000;
+      sessionStorage.setItem(key, deadline);
+      remaining = DURATION;
+    }
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    if (cdMin) cdMin.textContent = String(m).padStart(2, '0');
+    if (cdSec) cdSec.textContent = String(s).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Exit-intent modal (desktop only, once per session)
+  var exitOverlay = document.getElementById('exit-overlay');
+  var exitClose = document.getElementById('exit-close');
+  var exitShownKey = 'bvz_exit_shown';
+  var pageLoadedAt = Date.now();
+  function showExit() {
+    if (sessionStorage.getItem(exitShownKey)) return;
+    if (Date.now() - pageLoadedAt < 5000) return;
+    if (window.scrollY < 200) return;
+    exitOverlay.classList.add('is-visible');
+    sessionStorage.setItem(exitShownKey, '1');
+  }
+  document.addEventListener('mouseout', function (e) {
+    if (!e.relatedTarget && e.clientY <= 0) showExit();
+  });
+  exitClose.addEventListener('click', function () { exitOverlay.classList.remove('is-visible'); });
+  exitOverlay.addEventListener('click', function (e) { if (e.target === exitOverlay) exitOverlay.classList.remove('is-visible'); });
+
+  // Scroll reveal animation
+  var revealEls = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
