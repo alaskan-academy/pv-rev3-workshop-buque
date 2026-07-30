@@ -161,6 +161,8 @@
   }
   .video-frame .ph-label { position: absolute; bottom: 18px; left: 18px; right: 18px; color: rgba(255,255,255,0.55); font-size: 12px; text-align: center; }
 
+  .hero-note { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; margin-top: 14px; }
+
   .trust-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
   .trust-pill {
     display: inline-flex; align-items: center; gap: 7px;
@@ -171,9 +173,12 @@
   @media (max-width: 640px) {
     .hero { padding: 28px 0 40px; }
     .hero__grid { gap: 24px; }
-    .hero h1, .hero .lead { text-align: center; }
+    .hero h1, .hero .lead, .hero-note { text-align: center; }
     .hero .lead { max-width: 460px; margin-left: auto; margin-right: auto; }
+    .hero-note { justify-content: center; }
     .video-frame { aspect-ratio: 3/4; max-height: 380px; }
+    .trust-pills { flex-direction: column; align-items: stretch; }
+    .trust-pill { justify-content: center; width: 100%; }
   }
 
 
@@ -371,7 +376,7 @@
     <div>
       <h1>Aprenda a criar um <span class="accent">buquê de velas</span> usando os <span class="accent-alt">Sinais da Cera</span> (o jeito mais simples atualmente)</h1>
       <p class="lead">Laura Martins mostra como criar um buquê de velas bonito do zero, com um método simples e guiado em vídeo aulas.</p>
-      <p style="font-weight:700;font-size:14px;margin-top:14px;">⭐ Comunidade de tira dúvidas incluso</p>
+      <p class="hero-note">⭐ Comunidade de tira dúvidas incluso</p>
     </div>
     <div>
       <div class="video-frame">
