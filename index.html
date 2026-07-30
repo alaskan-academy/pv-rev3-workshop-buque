@@ -275,12 +275,10 @@
 
   /* About Laura */
   .laura-wrap { display: grid; gap: 40px; align-items: center; }
-  @media (min-width: 760px) { .laura-wrap { grid-template-columns: 260px 1fr; } }
-  .laura-avatar {
-    width: 220px; height: 220px; border-radius: 50%; margin: 0 auto;
-    background: linear-gradient(160deg, var(--handify-blue), var(--handify-green));
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 56px; font-weight: 900;
+  @media (min-width: 760px) { .laura-wrap { grid-template-columns: 320px 1fr; } }
+  .laura-photo {
+    width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 3/4;
+    object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   }
   .stat-badge { display: inline-flex; align-items: baseline; gap: 8px; background: var(--handify-off-white); border-radius: 12px; padding: 10px 18px; margin: 18px 0; }
   .stat-badge .n { font-size: 26px; font-weight: 900; color: var(--handify-blue); }
@@ -679,7 +677,7 @@
 <section class="bg-off reveal">
   <div class="container">
     <div class="laura-wrap">
-      <div class="laura-avatar">LM</div>
+      <img src="Fotos/foto%20da%20especialista%20Workshop%20Buque%20de%20Velas.webp" alt="Laura Martins com buquês de velas artesanais" class="laura-photo">
       <div>
         <span class="eyebrow">Quem ensina</span>
         <h2 style="margin-bottom:14px;">Conheça a professora que já ajudou milhares de mulheres a descobrirem que talento nunca foi o requisito para criar um buquê bonito.</h2>
