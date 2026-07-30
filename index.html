@@ -187,6 +187,12 @@
     margin: 26px 0;
   }
 
+  /* Signal / action list */
+  .signal-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+  .signal-item { border-left: 4px solid var(--handify-blue); background: #fff; border-radius: 0 10px 10px 0; padding: 12px 16px; }
+  .signal-item .q { font-size: 15px; font-weight: 700; color: var(--handify-black); }
+  .signal-item .a { font-size: 14px; font-weight: 900; color: var(--handify-blue); margin-top: 2px; }
+
   /* Modules accordion */
   .accordion { display: grid; gap: 14px; margin-top: 32px; }
   .acc-item {
@@ -416,10 +422,14 @@
       <span class="eyebrow">O método</span>
       <h2>O que faz uma iniciante conseguir criar um buquê bonito não é talento. É aprender a reconhecer os <span class="accent">Sinais da Cera</span>.</h2>
     </div>
-    <p style="margin-bottom:16px;">Você provavelmente acredita que quem faz buquês de velas bonitos nasceu com habilidade manual.</p>
-    <p style="margin-bottom:16px;">Mas, na prática, artesãs experientes não trabalham no "achismo". Elas observam pequenos sinais que a própria cera mostra durante a produção e que indicam exatamente quando modelar, montar e finalizar cada etapa.</p>
-    <div class="callout">Foi por isso que a Laura desenvolveu o <span class="accent">Método dos Sinais da Cera™</span>.</div>
-    <p>Em vez de ensinar apenas a copiar um buquê pronto, ela mostra como reconhecer esses sinais durante todo o processo. Assim, você deixa de ficar em dúvida se está fazendo certo e passa a saber exatamente quando seguir para a próxima etapa.</p>
+    <p style="margin-bottom:16px;">Durante a produção, a professora ensina que a cera muda de aparência várias vezes.</p>
+    <p style="margin-bottom:16px;">Em vez de tentar adivinhar se já está no ponto certo, você aprende na aula a reconhecer os sinais que ela mostra em cada etapa.</p>
+    <div class="signal-list">
+      <div class="signal-item"><div class="q">✨ Mudou o brilho?</div><div class="a">→ Hora de modelar</div></div>
+      <div class="signal-item"><div class="q">🤲 Atingiu a firmeza ideal?</div><div class="a">→ Hora de montar</div></div>
+      <div class="signal-item"><div class="q">💐 Estabilizou completamente?</div><div class="a">→ Hora de finalizar</div></div>
+    </div>
+    <p>Você deixa de trabalhar no "acho que já está bom" e passa a saber exatamente quando avançar, sem desperdiçar material e com mais confiança.</p>
   </div>
 </section>
 
