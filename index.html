@@ -223,10 +223,16 @@
   }
 
   /* Countdown */
-  .countdown { display: flex; gap: 10px; justify-content: center; margin: 28px 0 8px; }
-  .countdown .box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; min-width: 68px; text-align: center; }
-  .countdown .num { font-size: 26px; font-weight: 900; color: var(--handify-yellow); }
-  .countdown .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.6); }
+  .countdown { display: flex; align-items: center; gap: 12px; justify-content: center; margin: 36px 0 12px; }
+  .countdown .box {
+    background: rgba(254,198,73,0.08); border: 1px solid rgba(254,198,73,0.4);
+    border-radius: 16px; padding: 16px 22px; min-width: 96px; text-align: center;
+    box-shadow: 0 0 30px rgba(254,198,73,0.15);
+  }
+  .countdown .num { font-size: 48px; font-weight: 900; color: var(--handify-yellow); line-height: 1; font-variant-numeric: tabular-nums; animation: cd-pulse 1s ease-in-out infinite; }
+  .countdown .lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.65); margin-top: 8px; }
+  .countdown .sep { font-size: 40px; font-weight: 900; color: var(--handify-yellow); animation: cd-pulse 1s ease-in-out infinite; }
+  @keyframes cd-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
   /* Quote section */
   .quote-box { text-align: center; max-width: 720px; margin: 0 auto; }
@@ -611,6 +617,7 @@
     <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);">Quando esta condição terminar, o curso continuará disponível, mas poderá voltar ao valor normal e os bônus poderão ser disponibilizados separadamente.</p>
     <div class="countdown" id="countdown">
       <div class="box"><div class="num" id="cd-min">15</div><div class="lbl">min</div></div>
+      <span class="sep">:</span>
       <div class="box"><div class="num" id="cd-sec">00</div><div class="lbl">seg</div></div>
     </div>
     <p class="center" style="font-weight:700;font-size:17px;margin-top:8px;">Não deixe para depois aquilo que pode ser o início do seu primeiro buquê.</p>
