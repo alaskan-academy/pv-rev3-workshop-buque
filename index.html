@@ -238,6 +238,15 @@
   .bonus-card--featured .emoji { font-size: 32px; }
   .bonus-card--featured h3 { font-size: 19px; }
   .bonus-card--featured p { font-size: 15px; }
+  .lifetime-banner {
+    display: flex; align-items: center; gap: 20px; text-align: left;
+    max-width: 640px; margin: 36px auto 0; padding: 26px 30px;
+    background: var(--handify-black); color: #fff; border-radius: 18px;
+  }
+  .lifetime-banner .icon { font-size: 42px; flex-shrink: 0; }
+  .lifetime-banner strong { display: block; font-size: 19px; color: var(--handify-yellow); margin-bottom: 4px; }
+  .lifetime-banner p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.8); }
+  @media (max-width: 480px) { .lifetime-banner { flex-direction: column; text-align: center; } }
   .bonus-card--wide { grid-column: span 2; }
   @media (max-width: 640px) { .bonus-card--wide { grid-column: span 1; } }
   .bonus-card__img { width: 100%; height: auto; display: block; margin: 14px 0 4px; }
@@ -598,7 +607,13 @@
       <div class="bonus-card bonus-card--featured bonus-card--wide"><h3>Comunidade Exclusiva de Alunas</h3><img src="Fotos/mockup%20buque%20comunidade1.webp" alt="Comunidade exclusiva de alunas no app Handify" class="bonus-card__img"><p>Um espaço para tirar dúvidas, compartilhar resultados e aprender com quem está seguindo o mesmo caminho.</p></div>
       <div class="bonus-card"><span class="emoji">♾️</span><h3>Acesso Vitalício</h3><p>Assista às aulas e utilize todas as ferramentas sempre que quiser, sem prazo para terminar.</p></div>
     </div>
-    <p class="center" style="max-width:600px;margin:36px auto 0;font-weight:600;">A ideia é simples: você assistir, aplicar e conseguir fazer. Por isso, além das aulas, você recebe ferramentas práticas que deixam o processo mais organizado, mais seguro e muito mais fácil para quem está começando.</p>
+    <div class="lifetime-banner">
+      <span class="icon">♾️</span>
+      <div>
+        <strong>Acesso vitalício</strong>
+        <p>Assista quando quiser e revise sempre que precisar. Sem prazo para terminar, sem mensalidade.</p>
+      </div>
+    </div>
   </div>
 </section>
 
