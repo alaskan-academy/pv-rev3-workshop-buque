@@ -231,12 +231,16 @@
   .bonus-card .emoji { font-size: 28px; margin-bottom: 12px; display: block; }
   .bonus-card h3 { margin-bottom: 8px; font-size: 16px; }
   .bonus-card p { font-size: 14px; color: var(--handify-gray-dark); }
-  .bonus-card--featured { padding: 20px; border-color: rgba(102,153,243,0.25); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  .bonus-card--featured {
+    padding: 26px; background: linear-gradient(180deg, #fff 0%, var(--handify-off-white) 100%);
+    border-color: rgba(102,153,243,0.3); box-shadow: 0 10px 24px rgba(102,153,243,0.12);
+  }
+  .bonus-card--featured .emoji { font-size: 32px; }
   .bonus-card--featured h3 { font-size: 19px; }
   .bonus-card--featured p { font-size: 15px; }
   .bonus-card--wide { grid-column: span 2; }
   @media (max-width: 640px) { .bonus-card--wide { grid-column: span 1; } }
-  .bonus-card__img { width: 100%; height: auto; display: block; border-radius: 14px; margin-bottom: 16px; box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+  .bonus-card__img { width: 100%; height: auto; display: block; margin: 14px 0 4px; }
 
   /* Testimonials */
   .proof-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 32px; }
@@ -587,11 +591,11 @@
       <div class="bonus-card"><span class="emoji">🛒</span><h3>Mapa de Materiais Essenciais</h3><p>A lista completa de tudo o que você precisa, com quantidades exatas para comprar apenas o necessário.</p></div>
       <div class="bonus-card"><span class="emoji">🌡</span><h3>Guia dos <span class="accent">Sinais da Cera</span></h3><p>As temperaturas e os sinais certos de cada etapa para modelar as flores com muito mais segurança e sem desperdício.</p></div>
       <div class="bonus-card"><span class="emoji">🛠</span><h3>Guia de Acabamento Profissional</h3><p>As soluções para evitar bolhas, manchas, rachaduras e outros erros que deixam o buquê com aparência amadora.</p></div>
-      <div class="bonus-card"><span class="emoji">💰</span><h3>App de Precificação Handify</h3><p>Informe seus custos e descubra automaticamente quanto cobrar e qual será o seu lucro. Sem planilhas complicadas.</p></div>
-      <div class="bonus-card"><span class="emoji">🧪</span><h3>App de Essências Handify</h3><p>Calcule em segundos a quantidade ideal de essência para cada produção, direto pelo celular.</p></div>
-      <div class="bonus-card bonus-card--featured"><img src="Fotos/mockup%20buque%20fornecedores1.webp" alt="Central de fornecedores no app Handify" class="bonus-card__img"><span class="emoji">🏪</span><h3>Central de Fornecedores Handify</h3><p>Links diretos dos principais fornecedores nacionais de cera, moldes, pavios, corantes e outros materiais.</p></div>
-      <div class="bonus-card"><span class="emoji">💡</span><h3>Biblioteca de Inspirações Handify</h3><p>Um acervo em constante atualização com referências, ideias, combinações e tendências para criar novos buquês.</p></div>
-      <div class="bonus-card bonus-card--featured bonus-card--wide"><img src="Fotos/mockup%20buque%20comunidade1.webp" alt="Comunidade exclusiva de alunas no app Handify" class="bonus-card__img"><span class="emoji">👭</span><h3>Comunidade Exclusiva de Alunas</h3><p>Um espaço para tirar dúvidas, compartilhar resultados e aprender com quem está seguindo o mesmo caminho.</p></div>
+      <div class="bonus-card bonus-card--featured"><span class="emoji">💰</span><h3>App de Precificação Handify</h3><p>Informe seus custos e descubra automaticamente quanto cobrar e qual será o seu lucro. Sem planilhas complicadas.</p></div>
+      <div class="bonus-card bonus-card--featured"><span class="emoji">🧪</span><h3>App de Essências Handify</h3><p>Calcule em segundos a quantidade ideal de essência para cada produção, direto pelo celular.</p></div>
+      <div class="bonus-card bonus-card--featured"><span class="emoji">🏪</span><h3>Central de Fornecedores Handify</h3><img src="Fotos/mockup%20buque%20fornecedores1.webp" alt="Central de fornecedores no app Handify" class="bonus-card__img"><p>Links diretos dos principais fornecedores nacionais de cera, moldes, pavios, corantes e outros materiais.</p></div>
+      <div class="bonus-card bonus-card--featured"><span class="emoji">💡</span><h3>Biblioteca de Inspirações Handify</h3><p>Um acervo em constante atualização com referências, ideias, combinações e tendências para criar novos buquês.</p></div>
+      <div class="bonus-card bonus-card--featured bonus-card--wide"><span class="emoji">👭</span><h3>Comunidade Exclusiva de Alunas</h3><img src="Fotos/mockup%20buque%20comunidade1.webp" alt="Comunidade exclusiva de alunas no app Handify" class="bonus-card__img"><p>Um espaço para tirar dúvidas, compartilhar resultados e aprender com quem está seguindo o mesmo caminho.</p></div>
       <div class="bonus-card"><span class="emoji">♾️</span><h3>Acesso Vitalício</h3><p>Assista às aulas e utilize todas as ferramentas sempre que quiser, sem prazo para terminar.</p></div>
     </div>
     <p class="center" style="max-width:600px;margin:36px auto 0;font-weight:600;">A ideia é simples: você assistir, aplicar e conseguir fazer. Por isso, além das aulas, você recebe ferramentas práticas que deixam o processo mais organizado, mais seguro e muito mais fácil para quem está começando.</p>
