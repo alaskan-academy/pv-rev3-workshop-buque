@@ -1020,23 +1020,35 @@
   tick();
   setInterval(tick, 1000);
 
-  // Exit-intent modal (desktop only, once per session)
+  // Exit-intent modal (once per session)
   var exitOverlay = document.getElementById('exit-overlay');
   var exitClose = document.getElementById('exit-close');
   var exitShownKey = 'bvz_exit_shown';
   var pageLoadedAt = Date.now();
-  function showExit() {
-    if (sessionStorage.getItem(exitShownKey)) return;
-    if (Date.now() - pageLoadedAt < 5000) return;
-    if (window.scrollY < 200) return;
+  function revealExit() {
+    if (sessionStorage.getItem(exitShownKey)) return false;
     exitOverlay.classList.add('is-visible');
     sessionStorage.setItem(exitShownKey, '1');
+    return true;
+  }
+  function showExit() {
+    if (Date.now() - pageLoadedAt < 5000) return;
+    if (window.scrollY < 200) return;
+    revealExit();
   }
   document.addEventListener('mouseout', function (e) {
     if (!e.relatedTarget && e.clientY <= 0) showExit();
   });
   exitClose.addEventListener('click', function () { exitOverlay.classList.remove('is-visible'); });
   exitOverlay.addEventListener('click', function (e) { if (e.target === exitOverlay) exitOverlay.classList.remove('is-visible'); });
+
+  // Back-button trap (mobile): swallow the first "back" press to show the exit modal instead of leaving
+  if (!sessionStorage.getItem(exitShownKey)) {
+    history.pushState({ exitTrap: true }, '', location.href);
+  }
+  window.addEventListener('popstate', function () {
+    revealExit();
+  });
 
   // Scroll reveal animation
   var revealEls = document.querySelectorAll('.reveal');
